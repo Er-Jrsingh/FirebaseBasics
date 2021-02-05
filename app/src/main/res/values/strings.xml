@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">FirebaseBasics</string>
+    <string name="enter_roll_no">Enter Roll No</string>
+    <string name="enter_your_name">Enter Your Name</string>
+    <string name="enter_course_name">Enter Course Name</string>
+    <string name="enter_mobile_number">Enter Mobile Number</string>
+    <string name="submit">Submit</string>
 </resources>
