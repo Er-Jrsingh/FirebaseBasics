@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FirebaseBasics</string>
+    <string name="browse_image">Browse Image</string>
+    <string name="Upload">upload</string>
 </resources>
