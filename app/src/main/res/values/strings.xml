@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">FirebaseBasics</string>
+    <string name="browse">Browse</string>
+    <string name="roll">Roll No.</string>
+    <string name="name">Your Name</string>
+    <string name="course">Your Course</string>
+    <string name="contact">Your Contact</string>
+    <string name="sign">Sign Up</string>
 </resources>
