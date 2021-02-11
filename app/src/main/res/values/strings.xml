@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">FirebaseBasics</string>
+    <string name="your_email">Enter Your Email</string>
+    <string name="your_password">EnterYour Password</string>
+    <string name="submit">Submit</string>
+    <string name="user_signup">User Signup</string>
+
 </resources>
