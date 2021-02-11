@@ -16,50 +16,48 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity {
-    TextInputLayout t1, t2;
+public class Login extends AppCompatActivity {
+    TextInputLayout email, pwd;
     ProgressBar bar;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         getSupportActionBar().hide();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        t1 = findViewById(R.id.u_email);
-        t2 = findViewById(R.id.password);
-        bar = findViewById(R.id.progressBar);
+        email = findViewById(R.id.email_login);
+        pwd = findViewById(R.id.pwd_login);
+        bar = findViewById(R.id.progressBar3_login);
+        mAuth = FirebaseAuth.getInstance();
     }
 
-    public void signUp(View view) {
+    public void signIn(View view) {
         bar.setVisibility(View.VISIBLE);
-        String email = t1.getEditText().getText().toString();
-        String password = t2.getEditText().getText().toString();
+        String email = this.email.getEditText().getText().toString();
+        String password = pwd.getEditText().getText().toString();
 
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             bar.setVisibility(View.INVISIBLE);
-                            t1.getEditText().setText("");
-                            t2.getEditText().setText("");
-                            Toast.makeText(getApplicationContext(), "Registered Successfully", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(Login.this, Dashboard.class);
+                            intent.putExtra("email", mAuth.getCurrentUser().getEmail());
+                            intent.putExtra("uid", mAuth.getCurrentUser().getUid());
+                            startActivity(intent);
                         } else {
                             bar.setVisibility(View.INVISIBLE);
-                            t1.getEditText().setText("");
-                            t2.getEditText().setText("");
-                            Toast.makeText(getApplicationContext(), "Failed !!", Toast.LENGTH_LONG).show();
+                            Login.this.email.getEditText().setText("");
+                            pwd.getEditText().setText("");
+                            Toast.makeText(getApplicationContext(), "Invalid email/password", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
     }
 
-    public void openLogin(View view) {
-        startActivity(new Intent(MainActivity.this, Login.class));
-    }
 }

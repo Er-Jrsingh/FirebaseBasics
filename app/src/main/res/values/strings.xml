@@ -4,5 +4,12 @@
     <string name="your_password">EnterYour Password</string>
     <string name="submit">Submit</string>
     <string name="user_signup">User Signup</string>
+    <string name="already_registered">Already Registered ?</string>
+    <string name="login_here">Login Here</string>
+    <string name="login">LOGIN</string>
+    <string name="welcome_to_dashboard">Welcome to Dashboard</string>
+    <string name="email">Email</string>
+    <string name="user_id">User Id</string>
+    <string name="logout">Logout</string>
 
 </resources>
